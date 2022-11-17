@@ -3,3 +3,4 @@
 
 # C++ files
 cmake-build-debug/*
+build/*

@@ -3,7 +3,6 @@
 //
 
 #if defined __ARM_ARCH && !defined TARGET_OS_MAC
-#define RGB_MATRIX_PLATFORM_RPI
 
 #include "../include/display.h"
 #ifdef _WIN32
@@ -11,6 +10,8 @@
 #else
 #include <unistd.h>
 #endif
+
+using rgb_matrix::RGBMatrix;
 
 void PixelDisplay::DisplayImage(const Mat &image)
 {
@@ -28,7 +29,7 @@ void PixelDisplay::DisplayImage(const Mat &image)
 
 PixelDisplay::PixelDisplay(int argc, char **argv)
 {
-    rgb_matrix::RGBMatrix::Options matrixDefaults;
+    RGBMatrix::Options matrixDefaults;
     matrixDefaults.hardware_mapping = "adafruit-hat";
     matrixDefaults.chain_length = 1;
     matrixDefaults.rows = 32;
@@ -36,7 +37,7 @@ PixelDisplay::PixelDisplay(int argc, char **argv)
     matrixDefaults.show_refresh_rate = true;
     rgb_matrix::RuntimeOptions runtime_defaults;
     runtime_defaults.drop_privileges = 1;
-    _matrix = rgb_matrix::RGBMatrix::CreateFromFlags(&argc, &argv, &matrixDefaults, &runtime_defaults);
+    _matrix = RGBMatrix::CreateFromFlags(&argc, &argv, &matrixDefaults, &runtime_defaults);
     if (_matrix == nullptr) {
         rgb_matrix::PrintMatrixFlags(stderr, matrixDefaults, runtime_defaults);
     }

@@ -24,7 +24,7 @@ void PixelDisplay::DisplayImage(const Mat &image)
         }
     }
 
-    usleep(10000);
+    usleep(20000);
 }
 
 PixelDisplay::PixelDisplay(int argc, char **argv)

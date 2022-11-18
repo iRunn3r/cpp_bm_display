@@ -53,7 +53,7 @@ int main(int argc, char **argv)
                       cropped);
 
         resize(cropped, minimized, Size(windowDimension, windowDimension));
-        ReduceColors(minimized);
+//        ReduceColors(minimized);
         flip(minimized, final, 1);
         display->DisplayImage(final);
     }

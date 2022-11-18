@@ -11,10 +11,14 @@ message(STATUS "OpenCV_LIBS = ${OpenCV_LIBS}")
 message(STATUS "OpenCV_INCLUDE_DIRS = ${OpenCV_INCLUDE_DIRS}")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 include_directories( /home/pi/rpi-rgb-led-matrix/include )
-link_directories( /home/pi/rpi-rgb-led-matrix/lib )
+IF( IS_DIRECTORY /home/pi/rpi-rgb-led-matrix/lib )
+    link_directories( /home/pi/rpi-rgb-led-matrix/lib )
+ENDIF()
 add_executable( DisplayImage
         src/display_rpi.cpp
         src/display_desktop.cpp
         main.cpp)
-target_link_libraries( DisplayImage rgbmatrix )
+IF( IS_DIRECTORY /home/pi/rpi-rgb-led-matrix/lib )
+    target_link_libraries( DisplayImage rgbmatrix )
+ENDIF()
 target_link_libraries( DisplayImage ${OpenCV_LIBS} )

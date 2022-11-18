@@ -20,7 +20,7 @@ void PixelDisplay::DisplayImage(const Mat &image)
         for (size_t x = 0; x < image.cols; ++x)
         {
             Vec3b color = image.at<Vec3b>(Point(x, y));
-            _matrix->SetPixel(x, y, color[0], color[1], color[2]);
+            _matrix->SetPixel(x, y, color[2], color[1], color[0]);
         }
     }
 

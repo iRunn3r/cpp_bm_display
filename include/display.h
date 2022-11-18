@@ -22,7 +22,7 @@ private:
     const char* _windowName = "Pixel Camera";
     const int _displayDimension = 320;
     ~PixelDisplay();
-#ifdef RGB_MATRIX_PLATFORM_RPI
+#if defined __ARM_ARCH && !defined TARGET_OS_MAC
     rgb_matrix::RGBMatrix *_matrix;
 #endif
 };

@@ -11,7 +11,7 @@
 #include <unistd.h>
 #endif
 
-using rgb_matrix::RGBMatrix;
+using namespace rgb_matrix;
 
 void PixelDisplay::DisplayImage(const Mat &image)
 {

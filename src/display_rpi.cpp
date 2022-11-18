@@ -2,7 +2,7 @@
 // Created by vaidas on 17/11/2022.
 //
 
-#if defined __arm__ && !defined TARGET_OS_MAC
+#if defined __ARM_ARCH && !defined TARGET_OS_MAC
 #define RGB_MATRIX_PLATFORM_RPI
 
 #include "../include/display.h"

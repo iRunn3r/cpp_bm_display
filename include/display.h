@@ -23,7 +23,7 @@ private:
     const int _displayDimension = 320;
     ~PixelDisplay();
 #ifdef RGB_MATRIX_PLATFORM_RPI
-    RGBMatrix *_matrix;
+    rgb_matrix::RGBMatrix *_matrix;
 #endif
 };
 

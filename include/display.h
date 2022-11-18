@@ -6,7 +6,7 @@
 #define DISPLAYIMAGE_DISPLAY_H
 
 #include <opencv2/opencv.hpp>
-#ifdef RGB_MATRIX_PLATFORM_RPI
+#if defined __ARM_ARCH && !defined TARGET_OS_MAC
 #include "led-matrix.h"
 #endif
 

@@ -30,7 +30,7 @@ void PixelDisplay::DisplayImage(const Mat &image)
 PixelDisplay::PixelDisplay(int argc, char **argv)
 {
     RGBMatrix::Options matrixDefaults;
-    matrixDefaults.hardware_mapping = "adafruit-hat";
+    matrixDefaults.hardware_mapping = "adafruit-hat-pwm";
     matrixDefaults.chain_length = 1;
     matrixDefaults.rows = 32;
     matrixDefaults.cols = 32;

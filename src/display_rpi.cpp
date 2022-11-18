@@ -38,9 +38,9 @@ PixelDisplay::PixelDisplay(int argc, char **argv)
     rgb_matrix::RuntimeOptions runtime_defaults;
     runtime_defaults.drop_privileges = 1;
     _matrix = RGBMatrix::CreateFromFlags(&argc, &argv, &matrixDefaults, &runtime_defaults);
-    if (_matrix == nullptr) {
-        rgb_matrix::PrintMatrixFlags(stderr, matrixDefaults, runtime_defaults);
-    }
+    // if (_matrix == nullptr) {
+    //     rgb_matrix::PrintMatrixFlags(stderr, matrixDefaults, runtime_defaults);
+    // }
 }
 
 PixelDisplay::~PixelDisplay()

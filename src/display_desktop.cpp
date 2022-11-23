@@ -21,5 +21,6 @@ PixelDisplay::~PixelDisplay()
 PixelDisplay::PixelDisplay(int argc, char** argv)
 {
     namedWindow(_windowName);
+    setWindowProperty(_windowName, WND_PROP_TOPMOST, 1);
 }
 #endif

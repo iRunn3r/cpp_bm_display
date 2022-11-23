@@ -23,38 +23,37 @@ void ReduceColors(Mat &image, int factor=32)
     }
 }
 
+void ProcessImage(const Mat &input, Mat &output)
+{
+    Mat cropped;
+    Mat minimized;
+    Mat greyScale;
+
+    int smallDimension = min(input.rows, input.cols);
+    getRectSubPix(input, Size(smallDimension, smallDimension), Point(input.cols / 2, input.rows / 2), cropped);
+
+    resize(cropped, minimized, Size(windowDimension, windowDimension));
+//    cvtColor(minimized, greyScale, COLOR_BGR2GRAY);
+    flip(minimized, output, 1);
+}
+
 int main(int argc, char **argv)
 {
-    Mat image;
     VideoCapture capture(0);
-
-    if (!capture.isOpened()) {
+    if (!capture.isOpened())
+    {
         printf("ERROR: Cannot open camera!");
         exit(1);
     }
 
-    Mat cropped;        // stores image cropped to the largest square allowed by camera
-    Mat minimized;      // stores image reduced to the LED Matrix dimension
-    Mat final;          // stores image at the final LED matrix resolution
-    Mat colorCorrected;
+    Mat image;
+    Mat final;
 
     auto *display = new PixelDisplay(argc, argv);
     while (true)
     {
         capture.read(image);
-
-        if (image.cols < 1 || image.rows < 1)
-        {
-            continue;
-        }
-
-        int smallDimension = min(image.rows, image.cols);
-        getRectSubPix(image, Size(smallDimension, smallDimension), Point(image.cols / 2, image.rows / 2),
-                      cropped);
-
-        resize(cropped, minimized, Size(windowDimension, windowDimension));
-        ReduceColors(minimized);
-        flip(minimized, final, 1);
+        ProcessImage(image, final);
         display->DisplayImage(final);
     }
 }

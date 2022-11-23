@@ -1,7 +1,7 @@
 ////
 //// Created by vaidas on 17/11/2022.
 ////
-#ifndef RGB_MATRIX_PLATFORM_RPI
+#if !defined __ARM_ARCH || defined TARGET_OS_MAC
 
 #include "../include/display.h"
 
@@ -21,5 +21,6 @@ PixelDisplay::~PixelDisplay()
 PixelDisplay::PixelDisplay(int argc, char** argv)
 {
     namedWindow(_windowName);
+    setWindowProperty(_windowName, WND_PROP_TOPMOST, 1);
 }
 #endif
